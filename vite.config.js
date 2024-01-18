@@ -5,4 +5,5 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
   base: "/rental-cars",
   plugins: [react()],
+  extensions: [".jsx", ".json", ".css", ".js"],
 });
