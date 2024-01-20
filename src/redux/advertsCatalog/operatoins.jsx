@@ -10,9 +10,9 @@ axios.defaults.params = {
 
 export const getListAdverts = createAsyncThunk(
   "adverts/getList",
-  async (signal, thunkAPI) => {
+  async ({ signal, page }, thunkAPI) => {
     try {
-      const { data } = await axios.get("adverts", { signal });
+      const { data } = await axios.get("adverts", { signal, params: { page } });
       return data;
     } catch (erorr) {
       return thunkAPI.rejectWithValue(erorr.message);

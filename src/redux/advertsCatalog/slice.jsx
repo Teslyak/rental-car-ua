@@ -5,12 +5,19 @@ const rentalCarsInitState = {
   adverts: [],
   isLoading: false,
   error: "",
+  page: 1,
+  limit: 12,
 };
 
 const rentalCarsSlice = createSlice({
   name: "rentalCars",
   initialState: rentalCarsInitState,
-
+  reducers: {
+    setLoadMoreAdverts: (state, action) => {
+      state.page = action.payload.page;
+      //state.limit = action.payload.limit;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(getListAdverts.pending, (state) => {
@@ -27,4 +34,5 @@ const rentalCarsSlice = createSlice({
       }),
 });
 
+export const { setLoadMoreAdverts } = rentalCarsSlice.actions;
 export const rentalCarsReducer = rentalCarsSlice.reducer;
