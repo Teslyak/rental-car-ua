@@ -4,6 +4,7 @@ import { Home } from "./pages/Home/Home";
 import { Catalog } from "./pages/Catalog/Catalog";
 import { Favorites } from "./pages/Favorites/Favorites";
 import { SharedLayout } from "./components/SharedLayout";
+import { NotFound } from "./components/NotFound/NotFound";
 function App() {
   return (
     <Routes>
@@ -11,6 +12,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="catalog" element={<Catalog />} />
         <Route path="favorites" element={<Favorites />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

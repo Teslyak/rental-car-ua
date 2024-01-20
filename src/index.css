@@ -56,19 +56,24 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  overflow-y: hidden;
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
-
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 /* Make images easier to work with */
 img,
 picture {
   max-width: 100%;
   display: block;
+  height: auto;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -118,4 +123,15 @@ html {
   ::-webkit-scrollbar-thumb:hover {
     background: #6191ff;
   }
+}
+
+button,
+a {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
 }

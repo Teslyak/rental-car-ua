@@ -1,11 +1,11 @@
-import { NavLink, Wrap } from "./Header.styled";
+import { Links, Wrap } from "./Header.styled";
 
 export const Header = () => {
   return (
     <Wrap>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="catalog">Catalog</NavLink>
-      <NavLink to="favorites">Favorites</NavLink>
+      <Links to="/">Home</Links>
+      <Links to="catalog">Catalog</Links>
+      <Links to="favorites">Favorites</Links>
     </Wrap>
   );
 };

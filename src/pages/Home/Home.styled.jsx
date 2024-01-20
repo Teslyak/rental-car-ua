@@ -9,7 +9,7 @@ export const Wrap = styled.div`
   background-image: url(${backGroundHome});
   height: 85vh;
   background-repeat: no-repeat;
-
+  justify-content: space-around;
   background-size: cover;
 `;
 
@@ -19,7 +19,6 @@ export const Title = styled.h1`
   width: 550px;
   text-align: center;
   font-size: 44px;
-  margin-bottom: 200px;
 `;
 
 export const Button = styled.button`
