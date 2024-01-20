@@ -5,19 +5,21 @@ import { AdvertsList } from "../../components/AdvertsList/AdvertsList";
 import { ButtonLoadMore, UlWrap, Wraper } from "./Catalog.styled";
 import { setLoadMoreAdverts } from "../../redux/advertsCatalog/slice";
 import {
-  selectAdvertsList,
   selectLimit,
   selectPage,
+  selectTotalHits,
 } from "../../redux/advertsCatalog/selectors";
 import { useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export const Catalog = () => {
   const page = useSelector(selectPage);
-  const adverts = useSelector(selectAdvertsList);
+  const totalHits = useSelector(selectTotalHits);
   const limitPage = useSelector(selectLimit);
   const dispatch = useDispatch();
   const location = useLocation();
+
+  const maxPage = (totalHits / limitPage) ^ 1;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -43,7 +45,7 @@ export const Catalog = () => {
       <UlWrap>
         <AdvertsList />
       </UlWrap>
-      {adverts.length === limitPage ? (
+      {page < maxPage ? (
         <ButtonLoadMore onClick={handleLoadMore}>Load more</ButtonLoadMore>
       ) : (
         noLoadMore()

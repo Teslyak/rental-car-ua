@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
-  //persistReducer,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,18 +9,18 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-//import storage from "redux-persist/lib/storage";
-//import { usersReducer } from "./user/slice";
+import storage from "redux-persist/lib/storage";
 import { rentalCarsReducer } from "./advertsCatalog/slice";
 
-// const userPersistConfig = {
-//   storage,
-// };
+const persistConfig = {
+  key: "rentalCarst",
+  storage,
+  blacklist: ["adverts", "page"],
+};
 
 export const store = configureStore({
   reducer: {
-    //user: persistReducer(userPersistConfig, usersReducer),
-    rentalCars: rentalCarsReducer,
+    rentalCars: persistReducer(persistConfig, rentalCarsReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

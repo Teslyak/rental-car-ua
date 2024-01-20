@@ -6,6 +6,7 @@ const rentalCarsInitState = {
   isLoading: false,
   error: "",
   page: 1,
+  totalHits: 25,
   limit: 12,
   favorite: [],
 };
@@ -23,6 +24,9 @@ const rentalCarsSlice = createSlice({
     delFavorite: (state, action) => {
       state.favorite = state.favorite.filter((e) => e.id !== action.payload.id);
     },
+    setPage: (state, action) => {
+      state.page = action.payload.page;
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -31,7 +35,8 @@ const rentalCarsSlice = createSlice({
       })
       .addCase(getListAdverts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.adverts = action.payload;
+        state.adverts = [...state.adverts, ...action.payload];
+
         state.error = "";
       })
       .addCase(getListAdverts.rejected, (state, action) => {
@@ -39,6 +44,7 @@ const rentalCarsSlice = createSlice({
         state.error = action.payload;
       }),
 });
+export const { setPage } = rentalCarsSlice.actions;
 export const { delFavorite } = rentalCarsSlice.actions;
 export const { setFavorite } = rentalCarsSlice.actions;
 export const { setLoadMoreAdverts } = rentalCarsSlice.actions;

@@ -1,3 +1,14 @@
+import { FavoriteList } from "../../components/FavoriteList/FavoriteList";
+import { UlWrap, Wraper } from "./Favorites.styled";
+
 export const Favorites = () => {
-  return <div>Favorites</div>;
+  return (
+    <>
+      <Wraper>
+        <UlWrap>
+          <FavoriteList />
+        </UlWrap>
+      </Wraper>
+    </>
+  );
 };
