@@ -9,23 +9,14 @@ import { Toaster } from "react-hot-toast";
 import { Audio } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import { selectIsLoading } from "./redux/advertsCatalog/selectors";
+import { Loader } from "./components/Loader/Loader";
 
 function App() {
   const isLoading = useSelector(selectIsLoading);
   console.log(isLoading);
   return (
     <>
-      {isLoading ? (
-        <Audio
-          height="80"
-          width="80"
-          radius="9"
-          color="green"
-          ariaLabel="loading"
-          wrapperStyle
-          wrapperClass
-        />
-      ) : null}
+      {isLoading ? <Loader /> : null}
 
       <Routes>
         <Route path="/" element={<SharedLayout />}>

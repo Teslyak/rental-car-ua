@@ -13,7 +13,7 @@ export const SharedLayout = () => {
   return (
     <Wrap>
       <Header />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading....</div>}>
         <Outlet />
       </Suspense>
       {!isLoading ? <Footer /> : null}

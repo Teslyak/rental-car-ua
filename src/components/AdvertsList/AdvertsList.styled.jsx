@@ -14,6 +14,9 @@ export const LiStyle = styled.li`
 `;
 export const TitleStyle = styled.div`
   width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: flex;
   justify-content: space-between;
   font-size: 16px;
@@ -59,6 +62,8 @@ export const WraperP = styled.div`
 
 export const FlexItem = styled.p`
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding-right: 5px;
   &:nth-child(n + 2) {
     padding-left: 10px;

@@ -69,13 +69,13 @@ export const AdvertsList = () => {
                 <WraperP>
                   <FlexItem>{e.address.split(/[,.]/)[1]}</FlexItem>
                   <FlexItem>{e.address.split(/[,.]/)[2]}</FlexItem>
-                  <FlexItem>id:{e.id}</FlexItem>
-                  <FlexItem>Year:{e.year}</FlexItem>
-                  <FlexItem>Type:{formatType(e.type)}</FlexItem>
+                  <FlexItem>{e.id}</FlexItem>
+                  <FlexItem>{e.year}</FlexItem>
+                  <FlexItem>{formatType(e.type)}</FlexItem>
                 </WraperP>
                 <WraperP>
-                  <FlexItem>Fuel Consumption:{e.fuelConsumption}</FlexItem>
-                  <FlexItem>Engine Size:{e.engineSize}</FlexItem>
+                  <FlexItem>{e.fuelConsumption}</FlexItem>
+                  <FlexItem>{e.engineSize}</FlexItem>
                 </WraperP>
               </DiscrpDiv>
               <ButtonStyle type="button">Learn more</ButtonStyle>
