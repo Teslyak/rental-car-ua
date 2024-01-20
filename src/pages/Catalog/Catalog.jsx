@@ -10,7 +10,6 @@ import {
   selectTotalHits,
 } from "../../redux/advertsCatalog/selectors";
 import { useLocation } from "react-router-dom";
-import toast from "react-hot-toast";
 
 export const Catalog = () => {
   const page = useSelector(selectPage);
