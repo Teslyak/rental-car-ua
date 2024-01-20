@@ -34,12 +34,6 @@ export const Catalog = () => {
     dispatch(setLoadMoreAdverts(countPage));
   };
 
-  const noLoadMore = () => {
-    const notify = () => toast("There are no more ads");
-    notify();
-    return null;
-  };
-
   return (
     <Wraper>
       <UlWrap>
@@ -47,9 +41,7 @@ export const Catalog = () => {
       </UlWrap>
       {page < maxPage ? (
         <ButtonLoadMore onClick={handleLoadMore}>Load more</ButtonLoadMore>
-      ) : (
-        noLoadMore()
-      )}
+      ) : null}
     </Wraper>
   );
 };

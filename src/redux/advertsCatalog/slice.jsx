@@ -6,7 +6,7 @@ const rentalCarsInitState = {
   isLoading: false,
   error: "",
   page: 1,
-  totalHits: 25,
+  totalHits: 32,
   limit: 12,
   favorite: [],
 };

@@ -6,7 +6,6 @@ import { Favorites } from "./pages/Favorites/Favorites";
 import { SharedLayout } from "./components/SharedLayout";
 import { NotFound } from "./components/NotFound/NotFound";
 import { Toaster } from "react-hot-toast";
-import { Audio } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import { selectIsLoading } from "./redux/advertsCatalog/selectors";
 import { Loader } from "./components/Loader/Loader";
