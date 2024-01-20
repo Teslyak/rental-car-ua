@@ -7,6 +7,7 @@ const rentalCarsInitState = {
   error: "",
   page: 1,
   limit: 12,
+  favorite: [],
 };
 
 const rentalCarsSlice = createSlice({
@@ -15,7 +16,12 @@ const rentalCarsSlice = createSlice({
   reducers: {
     setLoadMoreAdverts: (state, action) => {
       state.page = action.payload.page;
-      //state.limit = action.payload.limit;
+    },
+    setFavorite: (state, action) => {
+      state.favorite.push(action.payload);
+    },
+    delFavorite: (state, action) => {
+      state.favorite = state.favorite.filter((e) => e.id !== action.payload.id);
     },
   },
   extraReducers: (builder) =>
@@ -33,6 +39,7 @@ const rentalCarsSlice = createSlice({
         state.error = action.payload;
       }),
 });
-
+export const { delFavorite } = rentalCarsSlice.actions;
+export const { setFavorite } = rentalCarsSlice.actions;
 export const { setLoadMoreAdverts } = rentalCarsSlice.actions;
 export const rentalCarsReducer = rentalCarsSlice.reducer;

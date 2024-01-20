@@ -8,6 +8,7 @@ export const ImgStyle = styled.img`
 `;
 
 export const LiStyle = styled.li`
+  position: relative;
   max-width: 274px;
   height: 426px;
 `;
@@ -65,4 +66,12 @@ export const FlexItem = styled.p`
   &:not(:last-child) {
     border-right: 1px solid #ccc;
   }
+`;
+export const HeartWraper = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 14px;
+  left: 114px;
+  z-index: 1;
+  border: none;
 `;

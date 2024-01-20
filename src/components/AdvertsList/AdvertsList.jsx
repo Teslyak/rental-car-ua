@@ -1,9 +1,13 @@
-import { useSelector } from "react-redux";
-import { selectAdvertsList } from "../../redux/advertsCatalog/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectAdvertsList,
+  selectFavorite,
+} from "../../redux/advertsCatalog/selectors";
 import {
   ButtonStyle,
   DiscrpDiv,
   FlexItem,
+  HeartWraper,
   ImgDiv,
   ImgStyle,
   LiStyle,
@@ -11,6 +15,10 @@ import {
   TitleStyle,
   WraperP,
 } from "./AdvertsList.styled";
+import { Heart } from "../../assets/icons/Heart";
+import { delFavorite, setFavorite } from "../../redux/advertsCatalog/slice";
+import { colors } from "../../constants";
+
 const formatType = (type) => {
   const inputString = type;
   const outputString =
@@ -18,13 +26,36 @@ const formatType = (type) => {
   return outputString;
 };
 export const AdvertsList = () => {
+  const dispatch = useDispatch();
   const advetsItems = useSelector(selectAdvertsList);
+  const favorite = useSelector(selectFavorite);
+
+  const handleFavorite = (advert) => {
+    const isFavoriteItem = favorite.some((e) => e.id === advert.id);
+    if (isFavoriteItem) {
+      dispatch(delFavorite(advert));
+    } else {
+      dispatch(setFavorite(advert));
+    }
+  };
   return (
     <>
       {advetsItems.map((e) => {
+        const isFavoriteItem = favorite.some((el) => el.id === e.id);
+        const colorHeart = isFavoriteItem ? colors.BLUE : "none";
+        const strokeHeart = isFavoriteItem ? "none" : colors.WHITE;
         return (
           <>
             <LiStyle key={e.id}>
+              <HeartWraper onClick={() => handleFavorite(e)}>
+                <Heart
+                  width={18}
+                  height={18}
+                  color={colorHeart}
+                  stroke={strokeHeart}
+                />
+              </HeartWraper>
+
               <ImgDiv>
                 <ImgStyle src={e.img} alt="image car" />
               </ImgDiv>
