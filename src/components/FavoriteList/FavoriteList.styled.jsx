@@ -74,4 +74,5 @@ export const HeartWraper = styled.div`
   left: 114px;
   z-index: 1;
   border: none;
+  cursor: pointer;
 `;

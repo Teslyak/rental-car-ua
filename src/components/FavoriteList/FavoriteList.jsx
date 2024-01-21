@@ -64,13 +64,12 @@ export const FavoriteList = () => {
                 <WraperP>
                   <FlexItem>{e.address.split(/[,.]/)[1]}</FlexItem>
                   <FlexItem>{e.address.split(/[,.]/)[2]}</FlexItem>
-                  <FlexItem>id:{e.id}</FlexItem>
-                  <FlexItem>Year:{e.year}</FlexItem>
-                  <FlexItem>Type:{formatType(e.type)}</FlexItem>
+                  <FlexItem>{e.rentalCompany}</FlexItem>
+                  <FlexItem>{formatType(e.type)}</FlexItem>
                 </WraperP>
                 <WraperP>
-                  <FlexItem>Fuel Consumption:{e.fuelConsumption}</FlexItem>
-                  <FlexItem>Engine Size:{e.engineSize}</FlexItem>
+                  <FlexItem>{e.model}</FlexItem>
+                  <FlexItem>{e.functionalities[0]}</FlexItem>
                 </WraperP>
               </DiscrpDiv>
             </LiStyle>

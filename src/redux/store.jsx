@@ -15,7 +15,7 @@ import { rentalCarsReducer } from "./advertsCatalog/slice";
 const persistConfig = {
   key: "rentalCarst",
   storage,
-  blacklist: ["adverts", "page"],
+  blacklist: ["adverts", "page", "filters"],
 };
 
 export const store = configureStore({

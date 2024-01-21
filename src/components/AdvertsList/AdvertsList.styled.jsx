@@ -54,6 +54,7 @@ export const ButtonStyle = styled.button`
   &:hover {
     background-color: ${colors.BLUE};
   }
+  cursor: pointer;
 `;
 
 export const WraperP = styled.div`
@@ -77,6 +78,7 @@ export const HeartWraper = styled.div`
   position: absolute;
   top: 14px;
   left: 114px;
-  z-index: 1;
+  z-index: 0;
   border: none;
+  cursor: pointer;
 `;

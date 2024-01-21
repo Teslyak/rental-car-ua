@@ -10,12 +10,16 @@ const rentalCarsInitState = {
   limit: 12,
   favorite: [],
   card: {},
+  filters: "",
 };
 
 const rentalCarsSlice = createSlice({
   name: "rentalCars",
   initialState: rentalCarsInitState,
   reducers: {
+    setFilters: (state, action) => {
+      state.filters = action.payload;
+    },
     setLoadMoreAdverts: (state, action) => {
       state.page = action.payload.page;
     },
@@ -49,6 +53,7 @@ const rentalCarsSlice = createSlice({
         state.error = action.payload;
       }),
 });
+export const { setFilters } = rentalCarsSlice.actions;
 export const { setCard } = rentalCarsSlice.actions;
 export const { setPage } = rentalCarsSlice.actions;
 export const { delFavorite } = rentalCarsSlice.actions;

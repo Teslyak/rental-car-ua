@@ -33,4 +33,5 @@ export const Button = styled.button`
   &:hover {
     background-color: ${colors.BLUE};
   }
+  cursor: pointer;
 `;

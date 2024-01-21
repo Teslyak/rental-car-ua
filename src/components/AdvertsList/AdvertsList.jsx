@@ -29,7 +29,8 @@ const formatType = (type) => {
     inputString.charAt(0).toUpperCase() + inputString.slice(1).toLowerCase();
   return outputString;
 };
-export const AdvertsList = ({ setIsOpenModal }) => {
+
+export const AdvertsList = ({ setIsOpenModal, isFiltered }) => {
   const dispatch = useDispatch();
   const advetsItems = useSelector(selectAdvertsList);
   const favorite = useSelector(selectFavorite);
@@ -43,7 +44,6 @@ export const AdvertsList = ({ setIsOpenModal }) => {
     }
   };
   const handleLearnMore = (card) => {
-    console.log(card);
     setIsOpenModal(true);
     dispatch(setCard(card));
   };

@@ -227,10 +227,12 @@ export const ButtonRentalCar = styled.button`
   width: 168px;
   height: 44px;
   display: flex;
+  cursor: pointer;
 `;
 
 export const BtnClose = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
+  cursor: pointer;
 `;
