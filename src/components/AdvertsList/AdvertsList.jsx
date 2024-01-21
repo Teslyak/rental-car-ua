@@ -16,7 +16,11 @@ import {
   WraperP,
 } from "./AdvertsList.styled";
 import { Heart } from "../../assets/icons/Heart";
-import { delFavorite, setFavorite } from "../../redux/advertsCatalog/slice";
+import {
+  delFavorite,
+  setCard,
+  setFavorite,
+} from "../../redux/advertsCatalog/slice";
 import { colors } from "../../constants";
 
 const formatType = (type) => {
@@ -25,7 +29,7 @@ const formatType = (type) => {
     inputString.charAt(0).toUpperCase() + inputString.slice(1).toLowerCase();
   return outputString;
 };
-export const AdvertsList = () => {
+export const AdvertsList = ({ setIsOpenModal }) => {
   const dispatch = useDispatch();
   const advetsItems = useSelector(selectAdvertsList);
   const favorite = useSelector(selectFavorite);
@@ -38,6 +42,12 @@ export const AdvertsList = () => {
       dispatch(setFavorite(advert));
     }
   };
+  const handleLearnMore = (card) => {
+    console.log(card);
+    setIsOpenModal(true);
+    dispatch(setCard(card));
+  };
+
   return (
     <>
       {advetsItems.map((e) => {
@@ -69,16 +79,17 @@ export const AdvertsList = () => {
                 <WraperP>
                   <FlexItem>{e.address.split(/[,.]/)[1]}</FlexItem>
                   <FlexItem>{e.address.split(/[,.]/)[2]}</FlexItem>
-                  <FlexItem>{e.id}</FlexItem>
-                  <FlexItem>{e.year}</FlexItem>
+                  <FlexItem>{e.rentalCompany}</FlexItem>
                   <FlexItem>{formatType(e.type)}</FlexItem>
                 </WraperP>
                 <WraperP>
-                  <FlexItem>{e.fuelConsumption}</FlexItem>
-                  <FlexItem>{e.engineSize}</FlexItem>
+                  <FlexItem>{e.model}</FlexItem>
+                  <FlexItem>{e.functionalities[0]}</FlexItem>
                 </WraperP>
               </DiscrpDiv>
-              <ButtonStyle type="button">Learn more</ButtonStyle>
+              <ButtonStyle type="button" onClick={() => handleLearnMore(e)}>
+                Learn more
+              </ButtonStyle>
             </LiStyle>
           </>
         );

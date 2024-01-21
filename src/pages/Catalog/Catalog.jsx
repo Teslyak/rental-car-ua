@@ -11,7 +11,7 @@ import {
 } from "../../redux/advertsCatalog/selectors";
 import { useLocation } from "react-router-dom";
 
-export const Catalog = () => {
+export const Catalog = ({ setIsOpenModal }) => {
   const page = useSelector(selectPage);
   const totalHits = useSelector(selectTotalHits);
   const limitPage = useSelector(selectLimit);
@@ -34,13 +34,15 @@ export const Catalog = () => {
   };
 
   return (
-    <Wraper>
-      <UlWrap>
-        <AdvertsList />
-      </UlWrap>
-      {page < maxPage ? (
-        <ButtonLoadMore onClick={handleLoadMore}>Load more</ButtonLoadMore>
-      ) : null}
-    </Wraper>
+    <>
+      <Wraper>
+        <UlWrap>
+          <AdvertsList setIsOpenModal={setIsOpenModal} />
+        </UlWrap>
+        {page < maxPage ? (
+          <ButtonLoadMore onClick={handleLoadMore}>Load more</ButtonLoadMore>
+        ) : null}
+      </Wraper>
+    </>
   );
 };

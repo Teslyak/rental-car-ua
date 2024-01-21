@@ -9,10 +9,12 @@ import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { selectIsLoading } from "./redux/advertsCatalog/selectors";
 import { Loader } from "./components/Loader/Loader";
+import { useState } from "react";
+import { Modal } from "./components/Modal/Modal";
 
 function App() {
   const isLoading = useSelector(selectIsLoading);
-  console.log(isLoading);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   return (
     <>
       {isLoading ? <Loader /> : null}
@@ -20,11 +22,15 @@ function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path="catalog" element={<Catalog />} />
+          <Route
+            path="catalog"
+            element={<Catalog setIsOpenModal={setIsOpenModal} />}
+          />
           <Route path="favorites" element={<Favorites />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      {isOpenModal ? <Modal onClose={() => setIsOpenModal(false)} /> : null}
       <Toaster />
     </>
   );

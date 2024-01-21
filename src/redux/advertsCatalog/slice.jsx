@@ -9,6 +9,7 @@ const rentalCarsInitState = {
   totalHits: 32,
   limit: 12,
   favorite: [],
+  card: {},
 };
 
 const rentalCarsSlice = createSlice({
@@ -27,7 +28,11 @@ const rentalCarsSlice = createSlice({
     setPage: (state, action) => {
       state.page = action.payload.page;
     },
+    setCard: (state, action) => {
+      state.card = action.payload;
+    },
   },
+
   extraReducers: (builder) =>
     builder
       .addCase(getListAdverts.pending, (state) => {
@@ -44,6 +49,7 @@ const rentalCarsSlice = createSlice({
         state.error = action.payload;
       }),
 });
+export const { setCard } = rentalCarsSlice.actions;
 export const { setPage } = rentalCarsSlice.actions;
 export const { delFavorite } = rentalCarsSlice.actions;
 export const { setFavorite } = rentalCarsSlice.actions;
