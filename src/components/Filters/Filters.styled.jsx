@@ -3,6 +3,16 @@ import styled from "styled-components";
 
 export const SelectStyled = styled(Select)`
   width: 244px;
+  color: "#121417";
+  text-align: start;
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(18, 20, 23, 0.2);
+  }
+`;
+export const SelectStyledPrice = styled(Select)`
+  width: 125px;
+  color: "#121417";
+  text-align: start;
 `;
 
 export const Button = styled.button`

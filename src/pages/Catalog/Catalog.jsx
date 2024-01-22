@@ -18,7 +18,7 @@ export const Catalog = ({ setIsOpenModal }) => {
   const totalHits = useSelector(selectTotalHits);
   const limitPage = useSelector(selectLimit);
   const dispatch = useDispatch();
-  const location = useLocation();
+  // const location = useLocation();
 
   const maxPage = (totalHits / limitPage) ^ 1;
 
@@ -29,7 +29,7 @@ export const Catalog = ({ setIsOpenModal }) => {
     return () => {
       return controller.abort();
     };
-  }, [dispatch, page, location]);
+  }, [dispatch, page]);
 
   const handleLoadMore = () => {
     const countPage = { page: page + 1 };

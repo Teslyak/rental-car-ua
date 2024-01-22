@@ -6,6 +6,7 @@ import {
   InputTo,
   InputWrap,
   SelectStyled,
+  SelectStyledPrice,
 } from "./Filters.styled";
 import brands from "../../assets/makes.json";
 import { useState } from "react";
@@ -15,18 +16,9 @@ import { setFilters } from "../../redux/advertsCatalog/slice";
 
 export const Filters = () => {
   const adverts = useSelector(selectAdvertsList);
-  const defaultValueBrand = {
-    value: "Enter the text",
-    label: "Enter the text",
-  };
-  const defaultValuePrice = {
-    value: "To $",
-    label: "To $",
-  };
-  const [selectedOptionBrand, setSelectedOptionBrand] =
-    useState(defaultValueBrand);
-  const [selectedOptionPrice, setSelectedOptionPrice] =
-    useState(defaultValuePrice);
+
+  const [selectedOptionBrand, setSelectedOptionBrand] = useState(null);
+  const [selectedOptionPrice, setSelectedOptionPrice] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -66,12 +58,14 @@ export const Filters = () => {
           value={selectedOptionBrand}
           styles={CustomSelectStyled}
           onChange={handleChangeBrand}
+          placeholder="Enter the text"
         />
-        <SelectStyled
+        <SelectStyledPrice
           options={optionsPrice}
           value={selectedOptionPrice}
           styles={CustomSelectStyled}
           onChange={handleChangePrice}
+          placeholder="To $"
         />
         <InputWrap>
           <InputFrom type="text" placeholder="From" />
