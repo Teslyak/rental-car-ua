@@ -5,14 +5,16 @@ export const CustomSelectStyled = {
     border: "none",
     borderRadius: 14,
     backgroundColor: "#f7f7fbdf",
+
     indicatorsContainer: (provided) => ({
       ...provided,
       position: "relative",
     }),
+
     dropdownIndicator: (provided) => ({
       ...provided,
-      transition: "transform 0.3s ease", // Додаємо анімацію для плавного зміщення індикатора
-      transform: "rotate(0deg)", // Задаємо початковий оберт індикатора
+      transition: "transform 0.3s ease",
+      transform: "rotate(0deg)",
     }),
 
     color: "#121417",
@@ -33,7 +35,7 @@ export const CustomSelectStyled = {
   }),
   menu: (provided) => ({
     ...provided,
-    borderRadius: "14px", // Задаємо радіус бордера
+    borderRadius: "14px",
     overflowY: "hidden",
   }),
 };
