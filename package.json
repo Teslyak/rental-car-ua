@@ -1,7 +1,6 @@
 {
   "name": "rental-cars",
   "private": true,
-  "homepage": "https://teslyak.github.io/rental-cars/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
