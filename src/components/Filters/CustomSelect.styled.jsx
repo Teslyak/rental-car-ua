@@ -1,7 +1,5 @@
-import { colors } from "../../constants";
-
 export const CustomSelectStyled = {
-  control: (provided, state) => ({
+  control: (provided) => ({
     ...provided,
     height: 48,
     border: "none",
@@ -15,12 +13,11 @@ export const CustomSelectStyled = {
       ...provided,
       transition: "transform 0.3s ease", // Додаємо анімацію для плавного зміщення індикатора
       transform: "rotate(0deg)", // Задаємо початковий оберт індикатора
-      transform: state.menuIsOpen ? "rotate(180deg)" : "rotate(0deg)",
     }),
 
     color: "#121417",
   }),
-  option: (provided, { isSelected }) => ({
+  option: (provided) => ({
     ...provided,
     fontSize: "16px",
     fontWeight: 400,
