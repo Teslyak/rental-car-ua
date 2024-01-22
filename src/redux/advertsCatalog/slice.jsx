@@ -17,6 +17,9 @@ const rentalCarsSlice = createSlice({
   name: "rentalCars",
   initialState: rentalCarsInitState,
   reducers: {
+    setAdverts: (state, action) => {
+      state.adverts = action.payload;
+    },
     setFilters: (state, action) => {
       state.filters = action.payload;
     },
@@ -53,6 +56,7 @@ const rentalCarsSlice = createSlice({
         state.error = action.payload;
       }),
 });
+export const { setAdverts } = rentalCarsSlice.actions;
 export const { setFilters } = rentalCarsSlice.actions;
 export const { setCard } = rentalCarsSlice.actions;
 export const { setPage } = rentalCarsSlice.actions;

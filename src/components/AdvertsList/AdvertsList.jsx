@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectAdvertsList,
   selectFavorite,
+  selectFilters,
 } from "../../redux/advertsCatalog/selectors";
 import {
   ButtonStyle,
@@ -22,6 +23,7 @@ import {
   setFavorite,
 } from "../../redux/advertsCatalog/slice";
 import { colors } from "../../constants";
+import { useEffect, useState } from "react";
 
 const formatType = (type) => {
   const inputString = type;
@@ -30,10 +32,21 @@ const formatType = (type) => {
   return outputString;
 };
 
-export const AdvertsList = ({ setIsOpenModal, isFiltered }) => {
+export const AdvertsList = ({ setIsOpenModal }) => {
   const dispatch = useDispatch();
   const advetsItems = useSelector(selectAdvertsList);
   const favorite = useSelector(selectFavorite);
+  const filters = useSelector(selectFilters);
+  const [selectAds, setSelectAds] = useState(advetsItems);
+
+  useEffect(() => {
+    if (!filters) {
+      setSelectAds(advetsItems);
+    } else {
+      setSelectAds(filters);
+    }
+    return () => {};
+  }, [filters, advetsItems, setSelectAds]);
 
   const handleFavorite = (advert) => {
     const isFavoriteItem = favorite.some((e) => e.id === advert.id);
@@ -50,7 +63,7 @@ export const AdvertsList = ({ setIsOpenModal, isFiltered }) => {
 
   return (
     <>
-      {advetsItems.map((e) => {
+      {selectAds.map((e) => {
         const isFavoriteItem = favorite.some((el) => el.id === e.id);
         const colorHeart = isFavoriteItem ? colors.BLUE : "none";
         const strokeHeart = isFavoriteItem ? "none" : colors.WHITE;

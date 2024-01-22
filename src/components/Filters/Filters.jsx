@@ -8,15 +8,13 @@ import {
   SelectStyled,
 } from "./Filters.styled";
 import brands from "../../assets/makes.json";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectAdvertsList,
-  selectFilters,
-} from "../../redux/advertsCatalog/selectors";
+import { selectAdvertsList } from "../../redux/advertsCatalog/selectors";
 import { setFilters } from "../../redux/advertsCatalog/slice";
 
 export const Filters = () => {
+  const adverts = useSelector(selectAdvertsList);
   const defaultValueBrand = {
     value: "Enter the text",
     label: "Enter the text",
@@ -53,7 +51,11 @@ export const Filters = () => {
     setSelectedOptionPrice(selectedOptionPrice);
   };
   const handleSearch = () => {
-    dispatch(setFilters(selectedOptionBrand));
+    const isAdsFilterd = adverts.filter(
+      (e) => e.make === selectedOptionBrand.value
+    );
+
+    dispatch(setFilters(isAdsFilterd));
   };
 
   return (
