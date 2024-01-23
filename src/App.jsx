@@ -19,7 +19,7 @@ function App() {
     <>
       {isLoading ? <Loader /> : null}
 
-      <Routes basename="/rental-car-ua">
+      <Routes basename="/rental-car-ua/">
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route
