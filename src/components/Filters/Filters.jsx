@@ -16,9 +16,8 @@ import { setFilters } from "../../redux/advertsCatalog/slice";
 
 export const Filters = () => {
   const adverts = useSelector(selectAdvertsList);
-
-  const [selectedOptionBrand, setSelectedOptionBrand] = useState(null);
-  const [selectedOptionPrice, setSelectedOptionPrice] = useState(null);
+  const [selectedOptionBrand, setSelectedOptionBrand] = useState("");
+  const [selectedOptionPrice, setSelectedOptionPrice] = useState("");
 
   const dispatch = useDispatch();
 
@@ -27,27 +26,54 @@ export const Filters = () => {
     return newOptions;
   });
 
-  const optionsPrice = [
-    { value: "20", label: "20" },
-    { value: "30", label: "30" },
-    { value: "40", label: "40" },
-    { value: "50", label: "50" },
-    { value: "60", label: "60" },
-    { value: "70", label: "70" },
-    { value: "80", label: "80" },
-  ];
-  const handleChangeBrand = (selectedOptionBrand) => {
-    setSelectedOptionBrand(selectedOptionBrand);
+  const optionsPrice = () => {
+    const options = [];
+    for (let i = 5; i <= 500; i += 5) {
+      options.push({ value: i.toString(), label: i.toString() });
+    }
+    return options;
   };
-  const handleChangePrice = (selectedOptionPrice) => {
-    setSelectedOptionPrice(selectedOptionPrice);
+
+  const handleChangeBrand = (value) => {
+    setSelectedOptionBrand(value);
+  };
+  const handleChangePrice = (value) => {
+    setSelectedOptionPrice(value);
   };
   const handleSearch = () => {
-    const isAdsFilterd = adverts.filter(
-      (e) => e.make === selectedOptionBrand.value
-    );
+    const dataFilters = {
+      brand: selectedOptionBrand.value ? selectedOptionBrand.value : "",
+      price: selectedOptionPrice.value ? selectedOptionPrice.value : "",
+    };
 
-    dispatch(setFilters(isAdsFilterd));
+    if (dataFilters.brand === "All") {
+      dispatch(setFilters(adverts));
+      setSelectedOptionBrand("");
+      setSelectedOptionPrice("");
+      return;
+    }
+    if (dataFilters.brand && dataFilters.price) {
+      const isFilteredAds = adverts.filter(
+        (e) =>
+          e.make === dataFilters.brand &&
+          parseInt(e.rentalPrice.replace(/\D/g, ""), 10) ===
+            parseInt(dataFilters.price)
+      );
+
+      dispatch(setFilters(isFilteredAds));
+
+      return;
+    }
+    if (dataFilters.brand || dataFilters.price) {
+      const isFilteredAds = adverts.filter(
+        (e) =>
+          e.make === dataFilters.brand ||
+          parseInt(e.rentalPrice.replace(/\D/g, ""), 10) ===
+            parseInt(dataFilters.price)
+      );
+      dispatch(setFilters(isFilteredAds));
+      return;
+    }
   };
 
   return (
@@ -57,21 +83,23 @@ export const Filters = () => {
           options={options}
           value={selectedOptionBrand}
           styles={CustomSelectStyled}
-          onChange={handleChangeBrand}
+          onChange={(value) => handleChangeBrand(value)}
           placeholder="Enter the text"
+          name="brand"
         />
         <SelectStyledPrice
-          options={optionsPrice}
+          options={optionsPrice()}
           value={selectedOptionPrice}
           styles={CustomSelectStyled}
-          onChange={handleChangePrice}
+          onChange={(value) => handleChangePrice(value)}
           placeholder="To $"
+          name="price"
         />
         <InputWrap>
           <InputFrom type="text" placeholder="From" />
           <InputTo type="text" placeholder="To" />
         </InputWrap>
-        <Button onClick={handleSearch}>Search</Button>
+        <Button onClick={() => handleSearch()}>Search</Button>
       </DivWraper>
     </>
   );

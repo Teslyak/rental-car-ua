@@ -4,28 +4,32 @@ import { colors } from "../../constants";
 export const ModalWrap = styled.div`
   position: relative;
   width: 541px;
-  height: 752px;
+  height: auto;
   background-color: #fff;
   border-radius: 24px;
-  padding: 40px 35px;
+  padding: 40px 40px;
   display: flex;
   flex-direction: column;
 `;
 export const ImgStyle = styled.img`
-  height: 248px;
-  width: 469px;
-  border-radius: 20px;
-  margin-bottom: 11px;
-`;
-export const ImgDiv = styled.div``;
-
-export const TitleStyle = styled.div`
   width: 100%;
+  height: 248px;
+  border-radius: 20px;
+  object-fit: cover;
+`;
+export const ImgDiv = styled.div`
+  width: 461px;
+  margin-bottom: 14px;
+`;
+
+export const TitleStyle = styled.p`
+  width: 100%;
+  height: 24px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -46,6 +50,15 @@ export const DiscrpDiv = styled.div`
   line-height: 1.5;
   color: rgba(18, 20, 23, 0.5);
   margin-bottom: 14px;
+`;
+export const DiscrpDivAsc = styled.div`
+  max-width: 100%;
+  height: 40px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(18, 20, 23, 0.5);
 `;
 
 export const WraperP = styled.div`
