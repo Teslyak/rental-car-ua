@@ -13,7 +13,7 @@ import storage from "redux-persist/lib/storage";
 import { rentalCarsReducer } from "./advertsCatalog/slice";
 
 const persistConfig = {
-  key: "rentalCarst",
+  key: "rentalCars",
   storage,
   blacklist: ["adverts", "page", "filters"],
 };

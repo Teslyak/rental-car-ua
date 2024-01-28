@@ -9,6 +9,7 @@ import {
   BtnClose,
   ButtonRentalCar,
   DiscrpDiv,
+  DiscrpDivAsc,
   DivSecurMilePrice,
   FlexItem,
   ImgDiv,
@@ -42,17 +43,17 @@ export const Modal = ({ onClose }) => {
       <BaseModalWrap onClose={onClose}>
         <ModalWrap>
           <BtnClose onClick={() => onClose()}>
-            <Btn_close />
+            <Btn_close width={24} height={24} stroke={"#121417"} />
           </BtnClose>
 
           <ImgDiv>
             <ImgStyle src={card.img} alt="image car" />
           </ImgDiv>
+
           <TitleStyle>
-            <p>
-              {card.make} <SpanStyle>{card.model}</SpanStyle>, {card.year}
-            </p>
+            {card.make} <SpanStyle>{card.model}</SpanStyle>, {card.year}
           </TitleStyle>
+
           <DiscrpDiv>
             <WraperP>
               <FlexItem>{card.address.split(/[,.]/)[1]}</FlexItem>
@@ -71,7 +72,7 @@ export const Modal = ({ onClose }) => {
             comfortable ride and luxurious features.
           </StyledPDiscrp>
           <Accessories>Accessories and functionalities:</Accessories>
-          <DiscrpDiv>
+          <DiscrpDivAsc>
             <WraperP>
               <FlexItem>{card.accessories[0]}</FlexItem>
               <FlexItem>{card.accessories[1]}</FlexItem>
@@ -82,7 +83,7 @@ export const Modal = ({ onClose }) => {
               <FlexItem>{card.functionalities[1]}</FlexItem>
               <FlexItem>{card.functionalities[2]}</FlexItem>
             </WraperP>
-          </DiscrpDiv>
+          </DiscrpDivAsc>
           <RentalCond>Rental Conditions:</RentalCond>
           <AgeValidDiv>
             <Age>

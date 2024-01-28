@@ -10,8 +10,8 @@ export const UlWrap = styled.ul`
 `;
 
 export const Wraper = styled.div`
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 `;
 
 export const ButtonLoadMore = styled.button`

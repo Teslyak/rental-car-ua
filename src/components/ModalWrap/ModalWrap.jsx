@@ -23,7 +23,7 @@ const BaseModalWrap = ({ children, onClose }) => {
       document.body.style.overflow = "auto";
       window.removeEventListener("keydown", CloseModal);
     };
-  }, []);
+  }, [CloseModal]);
 
   return createPortal(
     <Backdrop id="modalWrap" $closing={closing} onClick={CloseModal}>

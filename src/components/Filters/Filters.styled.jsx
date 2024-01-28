@@ -38,6 +38,7 @@ export const DivWraper = styled.div`
   margin-bottom: 50px;
   gap: 18px;
   z-index: 999999;
+  align-items: flex-end;
 `;
 export const InputWrap = styled.div`
   display: flex;
@@ -49,7 +50,7 @@ export const InputFrom = styled.input`
   align-items: center;
   flex-shrink: 0;
   border-radius: 14px 0px 0px 14px;
-  border-right: 1px solid rgba(138, 138, 137, 0.2);
+
   background: #f7f7fb;
   border: none;
   font-size: 18px;
@@ -74,4 +75,57 @@ export const InputTo = styled.input`
   font-weight: 500;
   line-height: 1.1111;
   outline: none;
+  border-left: 1px solid rgba(138, 138, 137, 0.2);
+`;
+
+export const WrapSelectFrom = styled.div`
+  position: relative;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+export const BtnResetDiv = styled.div`
+  position: absolute;
+  top: 36px;
+  left: 186px;
+  z-index: 1;
+`;
+
+export const BtnResetPriceDiv = styled.div`
+  position: absolute;
+  top: 36px;
+  left: 68px;
+  z-index: 1;
+`;
+
+export const LabelBrandTo = styled.label`
+  color: #8a8a89;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.28571;
+`;
+
+export const WrapSelectTo = styled.div`
+  position: relative;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+export const WrapInputFromTo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: start;
+`;
+
+export const LabelInput = styled.label`
+  color: #8a8a89;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.28571;
 `;

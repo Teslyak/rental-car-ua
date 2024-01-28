@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const ImgStyle = styled.img`
-  height: 268px;
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
   margin-bottom: 14px;
+  object-fit: cover;
 `;
 
 export const LiStyle = styled.li`
@@ -41,6 +43,8 @@ export const DiscrpDiv = styled.div`
   margin-bottom: 28px;
 `;
 export const ImgDiv = styled.div`
+  width: 274px;
+  height: 268px;
   margin-bottom: 14px;
 `;
 

@@ -1,10 +1,11 @@
 export const CustomSelectStyled = {
-  control: (provided) => ({
+  control: (provided, state) => ({
     ...provided,
     height: 48,
     border: "none",
     borderRadius: 14,
     backgroundColor: "#f7f7fbdf",
+    stroke: state.isFocused ? "rgba(18, 20, 23, 0.5)" : "initial",
 
     indicatorsContainer: (provided) => ({
       ...provided,
