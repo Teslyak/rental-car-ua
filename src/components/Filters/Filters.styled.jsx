@@ -58,6 +58,14 @@ export const InputFrom = styled.input`
   font-weight: 500;
   line-height: 1.1111;
   outline: none;
+  &::placeholder {
+    color: #121417;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1111;
+  }
+  padding: 14px 41px 14px 70px;
+  color: #121417;
 `;
 
 export const InputTo = styled.input`
@@ -76,6 +84,13 @@ export const InputTo = styled.input`
   line-height: 1.1111;
   outline: none;
   border-left: 1px solid rgba(138, 138, 137, 0.2);
+  &::placeholder {
+    color: #121417;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1111;
+  }
+  padding: 14px 41px 14px 36px;
 `;
 
 export const WrapSelectFrom = styled.div`
@@ -116,6 +131,7 @@ export const WrapSelectTo = styled.div`
   gap: 8px;
 `;
 export const WrapInputFromTo = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -143,4 +159,24 @@ export const SpanToPrice = styled.span`
 
 export const SpanCount = styled.span`
   width: 100px;
+`;
+
+export const SpanInputFrom = styled.span`
+  position: absolute;
+  top: 40px;
+  left: 24px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.1111;
+`;
+
+export const SpanInputTo = styled.span`
+  position: absolute;
+  top: 40px;
+  left: 172px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.1111;
 `;

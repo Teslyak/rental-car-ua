@@ -12,6 +12,8 @@ import {
   LabelInput,
   SelectStyled,
   SelectStyledPrice,
+  SpanInputFrom,
+  SpanInputTo,
   SpanToPrice,
   WrapInputFromTo,
   WrapSelectFrom,
@@ -29,6 +31,8 @@ export const Filters = () => {
   const [selectedOptionBrand, setSelectedOptionBrand] = useState("");
   const [selectedOptionPrice, setSelectedOptionPrice] = useState("");
   const [optionPrice, setOptionPrice] = useState();
+  const [inputFrom, setInputFrom] = useState("");
+  const [inputTo, setInputTo] = useState("");
   const dispatch = useDispatch();
   const optionsPrice = () => {
     const options = [];
@@ -56,16 +60,29 @@ export const Filters = () => {
   const handleChangePrice = (value) => {
     setSelectedOptionPrice(value);
   };
+  const handleInputFrom = (e) => {
+    if (/^\d+(,\d*)?$/.test(e.target.value) || e.target.value === "") {
+      setInputFrom(e.target.value);
+    }
+  };
+  const handleInputTo = (e) => {
+    if (/^\d+(,\d*)?$/.test(e.target.value) || e.target.value === "") {
+      setInputTo(e.target.value);
+    }
+  };
   const handleSearch = () => {
     const dataFilters = {
       brand: selectedOptionBrand.value ? selectedOptionBrand.value : "",
       price: selectedOptionPrice.value ? selectedOptionPrice.value : "",
+      from: inputFrom ? inputFrom : "",
+      to: inputTo ? inputTo : "",
     };
 
     if (dataFilters.brand === "All") {
       dispatch(setFilters(adverts));
       setSelectedOptionBrand("");
       setSelectedOptionPrice("");
+
       return;
     }
     if (dataFilters.brand && dataFilters.price) {
@@ -90,7 +107,20 @@ export const Filters = () => {
       dispatch(setFilters(isFilteredAds));
       return;
     }
+    if (dataFilters.from && dataFilters.to) {
+      const isFilteredAds = adverts.filter(
+        (e) =>
+          parseInt(e.mileage) >= parseInt(inputFrom.replace(",", "")) &&
+          parseInt(e.mileage) <= parseInt(inputTo.replace(",", ""))
+      );
+
+      dispatch(setFilters(isFilteredAds));
+      setInputFrom("");
+      setInputTo("");
+      return;
+    }
   };
+
   return (
     <>
       <DivWraper>
@@ -149,8 +179,15 @@ export const Filters = () => {
         <WrapInputFromTo>
           <LabelInput htmlFor="from">Сar mileage / km</LabelInput>
           <InputWrap>
-            <InputFrom type="text" placeholder="From" id="from" />
-            <InputTo type="text" placeholder="To" />
+            <SpanInputFrom>From</SpanInputFrom>
+            <InputFrom
+              type="text"
+              id="from"
+              onChange={handleInputFrom}
+              value={inputFrom}
+            />
+            <SpanInputTo>To</SpanInputTo>
+            <InputTo type="text" onChange={handleInputTo} value={inputTo} />
           </InputWrap>
         </WrapInputFromTo>
         <Button onClick={() => handleSearch()}>Search</Button>
