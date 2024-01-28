@@ -1,4 +1,5 @@
-import { CustomSelectStyled } from "./CustomSelect.styled";
+import { CustomSelectStyled } from "./CustomSelectBrand.styled";
+import { CustomSelectStyledPrice } from "./CustomSelectPrice.styled";
 import {
   BtnResetDiv,
   BtnResetPriceDiv,
@@ -11,12 +12,13 @@ import {
   LabelInput,
   SelectStyled,
   SelectStyledPrice,
+  SpanToPrice,
   WrapInputFromTo,
   WrapSelectFrom,
   WrapSelectTo,
 } from "./Filters.styled";
 import brands from "../../assets/makes.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAdvertsList } from "../../redux/advertsCatalog/selectors";
 import { setFilters } from "../../redux/advertsCatalog/slice";
@@ -26,21 +28,27 @@ export const Filters = () => {
   const adverts = useSelector(selectAdvertsList);
   const [selectedOptionBrand, setSelectedOptionBrand] = useState("");
   const [selectedOptionPrice, setSelectedOptionPrice] = useState("");
-
+  const [optionPrice, setOptionPrice] = useState();
   const dispatch = useDispatch();
+  const optionsPrice = () => {
+    const options = [];
+    for (let i = 5; i <= 200; i += 5) {
+      options.push({
+        label: i.toString(),
+        value: i.toString(),
+      });
+    }
+    return options;
+  };
+
+  useEffect(() => {
+    setOptionPrice(optionsPrice());
+  }, []);
 
   const options = brands.map((e) => {
     const newOptions = { value: e, label: e };
     return newOptions;
   });
-
-  const optionsPrice = () => {
-    const options = [];
-    for (let i = 5; i <= 500; i += 5) {
-      options.push({ value: i.toString(), label: `To ${i.toString()}$` });
-    }
-    return options;
-  };
 
   const handleChangeBrand = (value) => {
     setSelectedOptionBrand(value);
@@ -83,7 +91,6 @@ export const Filters = () => {
       return;
     }
   };
-
   return (
     <>
       <DivWraper>
@@ -127,15 +134,17 @@ export const Filters = () => {
               />
             </BtnResetPriceDiv>
           ) : null}
+
           <LabelBrandTo htmlFor="price">Price/ 1 hour</LabelBrandTo>
           <SelectStyledPrice
-            options={optionsPrice()}
+            options={optionPrice}
+            styles={CustomSelectStyledPrice}
             value={selectedOptionPrice}
-            styles={CustomSelectStyled}
             onChange={(value) => handleChangePrice(value)}
-            placeholder="To $"
+            placeholder=""
             name="price"
           />
+          <SpanToPrice>To&nbsp;{selectedOptionPrice.value}&nbsp;$</SpanToPrice>
         </WrapSelectTo>
         <WrapInputFromTo>
           <LabelInput htmlFor="from">Сar mileage / km</LabelInput>

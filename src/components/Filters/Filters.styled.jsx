@@ -87,15 +87,15 @@ export const WrapSelectFrom = styled.div`
 `;
 export const BtnResetDiv = styled.div`
   position: absolute;
-  top: 36px;
+  top: 38px;
   left: 186px;
   z-index: 1;
 `;
 
 export const BtnResetPriceDiv = styled.div`
   position: absolute;
-  top: 36px;
-  left: 68px;
+  top: 38px;
+  left: 78px;
   z-index: 1;
 `;
 
@@ -128,4 +128,19 @@ export const LabelInput = styled.label`
   font-style: normal;
   font-weight: 500;
   line-height: 1.28571;
+`;
+
+export const SpanToPrice = styled.span`
+  position: absolute;
+  color: #121417;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.111;
+  top: 40px;
+  right: 54px;
+`;
+
+export const SpanCount = styled.span`
+  width: 100px;
 `;

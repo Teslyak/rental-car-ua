@@ -39,4 +39,12 @@ export const CustomSelectStyled = {
     borderRadius: "14px",
     overflowY: "hidden",
   }),
+  placeholder: (provided) => ({
+    ...provided,
+    color: "#121417",
+    fontSize: 18,
+    fontStyle: "normal",
+    fontWeight: 500,
+    lineHeight: 1.1111,
+  }),
 };
